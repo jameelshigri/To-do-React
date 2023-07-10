@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: #00004d;
+}
+.my-border{
+  border: 1px solid rgb(175, 169, 169);
+  border-radius: 0.5rem;
+  margin: 0.3rem;
+}
+
+

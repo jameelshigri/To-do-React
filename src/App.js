@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import ToDo from "./component/ToDo";
+import Alert from "./component/Alert";
+import React from "react";
 
 function App() {
+  const [alert, setAlert] = React.useState(null);
+  const showAlert = (message, type) => {
+    setAlert({ msg: message, type: type });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Alert alert={alert} />
+      <ToDo showAlert={showAlert} />
     </div>
   );
 }
