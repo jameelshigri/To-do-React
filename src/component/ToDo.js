@@ -1,17 +1,24 @@
 import axios from "axios";
 import React from "react";
+import Form from "./Form";
 function ToDo(props) {
   const [Task, setTask] = React.useState([]);
   const [newTask, setnewTask] = React.useState({ title: "" });
-
-  const handleChange = (e) => {
-    setnewTask({ ...newTask, title: e.target.value });
+  const [editTask, setEditTask] = React.useState();
+  const [toggle, setToggle] = React.useState(false);
+  const handleSubmit = (item) => {
+    addData(item);
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addData();
-    // event.target.value = "";
+  const handleEdit = (id) => {
+    setToggle(true);
+    let edit = Task.filter((task) => task.id === id);
+    setEditTask({ title: `${edit[0].title}`, id: edit[0].id });
   };
+  async function updateTask(item) {
+    await axios.patch("http://localhost:30005/todos/" + editTask.id, item);
+    setToggle(false);
+    fetchData();
+  }
   async function handleDelete(id) {
     let choice = window.confirm("Are You Sure?");
     if (choice) {
@@ -19,7 +26,6 @@ function ToDo(props) {
         const response = await axios.delete(
           "http://localhost:30005/todos/" + id
         );
-        console.log(response);
         if (response.status === 200) {
           fetchData();
           props.showAlert("Deleted!", "info");
@@ -32,8 +38,9 @@ function ToDo(props) {
       }
     }
   }
-  async function addData() {
-    const result = await axios.post("http://localhost:30005/todos", newTask);
+  async function addData(item) {
+    console.log(item);
+    const result = await axios.post("http://localhost:30005/todos", item);
     if (result) {
       props.showAlert("Task Added Successfully!", "success");
       fetchData();
@@ -53,31 +60,12 @@ function ToDo(props) {
       className="container-fluid py-2"
       style={{ backgroundColor: "#00004d" }}
     >
-      <div className="row justify-content-center">
-        <div className="col col-md-6 col-sm-12 col-lg-6 py-2">
-          <div className="card">
-            <div className="card-body">
-              <form className="" onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  className="form-control py-2 btn-rounded"
-                  id="task"
-                  placeholder="Enter Task....."
-                  value={newTask.title}
-                  onChange={handleChange}
-                  required
-                />
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-rounded my-3"
-                >
-                  Add Task
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Form
+        header="Add New Tasks Here!"
+        handler={handleSubmit}
+        Task={newTask}
+        ButtonText="Add"
+      />
       <div className="row justify-content-center">
         <div className="col col-md-6 col-sm-12 col-lg-6 py-1">
           <div className="card my-1">
@@ -96,7 +84,12 @@ function ToDo(props) {
                     <h5 className="p-0 m-0 text-uppercase">{taks.title}</h5>
                   </div>
                   <div className="d-flex flex-row-reverse align-items-center">
-                    <button className="btn btn-outline-success btn-floating mx-2">
+                    <button
+                      className="btn btn-outline-success btn-floating mx-2"
+                      onClick={() => {
+                        handleEdit(taks.id);
+                      }}
+                    >
                       <i className="fas fa-pen"></i>
                     </button>
                     <button
@@ -114,6 +107,15 @@ function ToDo(props) {
           </div>
         </div>
       </div>
+      {toggle ? (
+        <Form
+          header="Edit Task!"
+          handler={updateTask}
+          setToggle={setToggle}
+          Task={editTask}
+          ButtonText="Edit/Update"
+        />
+      ) : null}
     </div>
   );
 }
