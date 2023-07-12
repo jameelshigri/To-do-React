@@ -48,13 +48,7 @@ function Form(props) {
   );
 }
 Form.defaultProps = {
-  Title: "Something",
-  //   newTask: { title: "Something" },
-  // handleSubmit: (e) => {
-  //   // e.preventDefault();
-  //   console.log("pass a function");
-  // },
-  // handleChange: () => console.log("pass a function"),
+  Title: "Form",
 };
 
 export default Form;

@@ -1,5 +1,6 @@
 import ToDo from "./component/ToDo";
 import Alert from "./component/Alert";
+import Navbar from "./component/NavBar";
 import React from "react";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   };
   return (
     <div className="App">
+      <Navbar />
       <Alert alert={alert} />
       <ToDo showAlert={showAlert} />
     </div>

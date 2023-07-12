@@ -39,7 +39,6 @@ function ToDo(props) {
     }
   }
   async function addData(item) {
-    console.log(item);
     const result = await axios.post("http://localhost:30005/todos", item);
     if (result) {
       props.showAlert("Task Added Successfully!", "success");
