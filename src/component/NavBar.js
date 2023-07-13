@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 // import "icons8-todo-list-100.png" from '.'
 function NavBar() {
@@ -19,14 +19,14 @@ function NavBar() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <a className="navbar-brand mt-2 mt-lg-0" href="#">
+          <Link className="navbar-brand mt-2 mt-lg-0" to="">
             <img
               src="/icons8-todo-list-100.png"
               height="30"
               alt="Logo"
               loading="lazy"
             />
-          </a>
+          </Link>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item mx-2">
               <NavLink className="nav-link" to="/">
@@ -43,9 +43,9 @@ function NavBar() {
 
         <div className="d-flex align-items-center">
           <div className="dropdown">
-            <a
+            <Link
               className="dropdown-toggle d-flex align-items-center hidden-arrow"
-              href="#"
+              to=""
               id="navbarDropdownMenuAvatar"
               role="button"
               data-mdb-toggle="dropdown"
@@ -58,25 +58,25 @@ function NavBar() {
                 alt="Black and White Portrait of a Man"
                 loading="lazy"
               />
-            </a>
+            </Link>
             <ul
               className="dropdown-menu dropdown-menu-end"
               aria-labelledby="navbarDropdownMenuAvatar"
             >
               <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/profile">
                   My profile
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/profile-setting">
                   Settings
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="">
                   Logout
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
