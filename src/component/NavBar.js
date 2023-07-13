@@ -1,9 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 // import "icons8-todo-list-100.png" from '.'
 function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
+      <div className="container">
         <button
           className="navbar-toggler"
           type="button"
@@ -27,54 +29,19 @@ function NavBar() {
           </a>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/about">
                 About
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
 
         <div className="d-flex align-items-center">
-          <div className="dropdown">
-            <a
-              className="text-reset me-3 dropdown-toggle hidden-arrow"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="fas fa-bell"></i>
-              <span className="badge rounded-pill badge-notification bg-danger">
-                1
-              </span>
-            </a>
-            <ul
-              className="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <li>
-                <a className="dropdown-item" href="#">
-                  Some news
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another news
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
-          </div>
           <div className="dropdown">
             <a
               className="dropdown-toggle d-flex align-items-center hidden-arrow"

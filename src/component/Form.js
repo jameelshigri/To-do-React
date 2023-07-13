@@ -6,7 +6,7 @@ function Form(props) {
     <div className="row justify-content-center">
       <div className="col col-md-6 col-sm-12 col-lg-6 py-2">
         <div className="card">
-          <div className="card-body">
+          <div className="card-body text-center">
             <h5 className="card-title">{props.header}</h5>
             <form>
               <input
@@ -28,7 +28,7 @@ function Form(props) {
               >
                 {props.ButtonText}
               </button>
-              {props.Task.editTask ? (
+              {props.Toggle && (
                 <button
                   className="btn btn-danger ms-2 btn-rounded my-3"
                   type="submit"
@@ -39,7 +39,7 @@ function Form(props) {
                 >
                   Cancel
                 </button>
-              ) : null}
+              )}
             </form>
           </div>
         </div>

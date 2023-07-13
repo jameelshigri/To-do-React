@@ -55,10 +55,7 @@ function ToDo(props) {
     fetchData();
   }, []);
   return (
-    <div
-      className="container-fluid py-2"
-      style={{ backgroundColor: "#00004d" }}
-    >
+    <div className="container-fluid py-2">
       <Form
         header="Add New Tasks Here!"
         handler={handleSubmit}
@@ -112,6 +109,7 @@ function ToDo(props) {
           handler={updateTask}
           setToggle={setToggle}
           Task={editTask}
+          Toggle={toggle}
           ButtonText="Edit/Update"
         />
       ) : null}

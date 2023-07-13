@@ -3,9 +3,9 @@ import React from "react";
 function Alert(props) {
   return (
     props.alert && (
-      <div className="d-flex align-items-center justify-content-center p-2">
+      <div className="d-flex align-items-center justify-content-end p-2">
         <div
-          className={`alert bg-${props.alert.type} text-white d-flex w-100 align-items-center`}
+          className={`alert bg-${props.alert.type} text-white d-flex w-50 align-items-center`}
           role="alert"
         >
           <button className="btn btn-sm btn-floating btn-primary me-1">
